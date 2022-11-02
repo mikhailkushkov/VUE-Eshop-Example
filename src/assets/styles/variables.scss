@@ -1,0 +1,30 @@
+// GRID
+$d-flex: flex;
+$flex-wrap: wrap;
+
+// GAPS
+$padding: 8px;
+$margin: 8px;
+
+// COLORS
+$color-main: #000000;
+$primaryText: #212121;
+$secondaryText: #b6b6b6;
+$white: #ffffff;
+$orange: #fa8d08;
+$bgColor: #fafafa;
+$bgColorDarken: darken($bgColor, 8.25);
+
+// FONT-SIZES
+$font-size-par: 14px;
+
+// BOX-SHADOWS
+$box-shadow-item: 0 0 8px 0 #e0e0e0;
+
+// SCREEN DIMENSIONS
+$cardHeight: 350px;
+$cardDescriptionHeight: 65px;
+$screen-sm: 768px;
+
+$bezierProperty: cubic-bezier(0.165, 0.84, 0.44, 1);
+$bezierDuration: .6s;

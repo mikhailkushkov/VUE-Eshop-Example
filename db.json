@@ -1,0 +1,52 @@
+{
+  "products": [
+    {
+      "image": "1.jpg",
+      "name": "T-shirt 1",
+      "price": 45.555,
+      "id": "01",
+      "available": true,
+      "category": "Mens"
+    },
+    {
+      "image": "2.jpg",
+      "name": "T-shirt 2",
+      "price": 34.666787,
+      "id": "02",
+      "available": true,
+      "category": "Wemans"
+    },
+    {
+      "image": "3.jpg",
+      "name": "T-shirt 3",
+      "price": 12.4555,
+      "id": "03",
+      "available": false,
+      "category": "Wemans"
+    },
+    {
+      "image": "4.jpg",
+      "name": "T-shirt 4",
+      "price": 77.1333,
+      "id": "04",
+      "available": true,
+      "category": "Mens"
+    },
+    {
+      "image": "5.jpg",
+      "name": "T-shirt 5",
+      "price": 65.565656,
+      "id": "05",
+      "available": false,
+      "category": "Wemans"
+    },
+    {
+      "image": "6.jpeg",
+      "name": "T-shirt 6",
+      "price": 99.333,
+      "id": "06",
+      "available": true,
+      "category": "Wemans"
+    }
+  ]
+}
