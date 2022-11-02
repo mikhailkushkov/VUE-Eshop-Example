@@ -4,7 +4,7 @@
 
     <div class="catalog-wrapper__row">
       <EshopCatalogItem
-        v-for="(product, id) in products"
+        v-for="(product, id) in PRODUCTS"
         :key="id"
         :productObj="product"
         @addToBasket="showChildId"
@@ -15,6 +15,7 @@
 
 <script>
 import EshopCatalogItem from "./EshopCatalogItem.vue";
+import { mapActions, mapGetters } from "vuex";
 
 export default {
   name: "EshopCatalog",
@@ -22,69 +23,19 @@ export default {
     EshopCatalogItem,
   },
   data() {
-    return {
-      products: [
-        {
-          image: "img-1.jpg",
-          name: "Nike running",
-          price: 45.555,
-          description: "Tailored Fit. High quality shirt",
-          id: "01",
-          available: true,
-          category: "Mens",
-        },
-        {
-          image: "img-2.jpg",
-          name: "Nike home",
-          price: 34.666787,
-          description: "High Quality Collar",
-          id: "02",
-          available: true,
-          category: "Mens",
-        },
-        {
-          image: "img-3.jpg",
-          name: "T-shirt 3",
-          price: 12.4555,
-          description: "High Quality Collar. Fine Stitching.",
-          id: "03",
-          available: false,
-          category: "Mens",
-        },
-        {
-          image: "img-4.jpg",
-          name: "T-shirt 4",
-          price: 77.1333,
-          description: "Fiber Weave. Regular fit",
-          id: "04",
-          available: true,
-          category: "Mens",
-        },
-        {
-          image: "img-5.jpg",
-          name: "T-shirt 5",
-          price: 65.565656,
-          description: "Regular Fit.",
-          id: "05",
-          available: false,
-          category: "Womans",
-        },
-        {
-          image: "img-6.jpg",
-          name: "T-shirt 6",
-          price: 99.333,
-          description: "Premium Cotton Fabric.",
-          id: "06",
-          available: true,
-          category: "Womans",
-        },
-      ],
-    };
+    return {};
+  },
+  computed: {
+    ...mapGetters(["PRODUCTS"]),
   },
   methods: {
+    ...mapActions(["GET_PRODUCTS_FROM_API"]),
     showChildId(data) {
       console.log(data);
     },
+  },
+  mounted() {
+    this.GET_PRODUCTS_FROM_API();
   },
 };
 </script>

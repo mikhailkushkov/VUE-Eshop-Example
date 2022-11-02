@@ -51,7 +51,7 @@
           <div class="col-xs-12 col-sm-4 product-description__price">
             Price: {{ priceFixed }} €
           </div>
-          <h4 class="product-description__category secondary-text">
+          <h4 class="product-description__text secondary-text">
             {{ productObj.description }}
           </h4>
         </div>
@@ -135,10 +135,7 @@ export default {
   position: relative;
   width: 100%;
   height: $cardHeight;
-  border: 1px solid $bgColorDarken;
-  border-bottom-color: $white;
   overflow: hidden;
-  margin-bottom: 25px;
 
   &:after {
     content: "";
@@ -290,7 +287,7 @@ export default {
   }
 
   // title
-  .product-description__title {
+  &__title {
     font-family: "Raleway", sans-serif;
     position: relative;
     white-space: nowrap;
@@ -299,6 +296,7 @@ export default {
     font-size: 16px;
     line-height: normal;
     text-align: left;
+    margin-bottom: 20px;
 
     &:after {
       content: "";
@@ -315,12 +313,13 @@ export default {
     }
   }
 
-  // category
-  .product-description__category {
+  // text
+  .product-description__text {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     margin: 10px 0;
+    text-align: left;
   }
 
   // price

@@ -1,52 +1,58 @@
 {
   "products": [
     {
-      "image": "1.jpg",
-      "name": "T-shirt 1",
+      "image": "img-1.jpg",
+      "name": "Nike running",
       "price": 45.555,
+      "description": "Tailored Fit. High quality shirt",
       "id": "01",
       "available": true,
       "category": "Mens"
     },
     {
-      "image": "2.jpg",
-      "name": "T-shirt 2",
+      "image": "img-2.jpg",
+      "name": "Nike home",
       "price": 34.666787,
+      "description": "High Quality Collar",
       "id": "02",
       "available": true,
-      "category": "Wemans"
+      "category": "Mens"
     },
     {
-      "image": "3.jpg",
-      "name": "T-shirt 3",
+      "image": "img-3.jpg",
+      "name": "Nike running",
       "price": 12.4555,
+      "description": "High Quality Collar. Fine Stitching.",
       "id": "03",
       "available": false,
-      "category": "Wemans"
+      "category": "Mens"
     },
     {
-      "image": "4.jpg",
-      "name": "T-shirt 4",
+      "image": "img-4.jpg",
+      "name": "Nike blank",
       "price": 77.1333,
+      "description": "Fiber Weave. Regular fit",
       "id": "04",
       "available": true,
       "category": "Mens"
     },
     {
-      "image": "5.jpg",
-      "name": "T-shirt 5",
+      "image": "img-5.jpg",
+      "name": "Nike training",
       "price": 65.565656,
+      "description": "Regular Fit.",
       "id": "05",
       "available": false,
-      "category": "Wemans"
+      "category": "Womans"
     },
     {
-      "image": "6.jpeg",
-      "name": "T-shirt 6",
+      "image": "img-6.jpg",
+      "name": "Nike running",
       "price": 99.333,
+      "description": "Premium Cotton Fabric.",
       "id": "06",
       "available": true,
-      "category": "Wemans"
+      "category": "Womans"
     }
   ]
 }
