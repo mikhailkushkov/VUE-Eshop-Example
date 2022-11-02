@@ -19,7 +19,9 @@
       </button>
     </div> -->
 
+    <!-- card-wrapper -->
     <article class="card-wrapper">
+      <!-- image-holder -->
       <div class="image-holder">
         <div
           class="image-liquid image-holder--original"
@@ -28,15 +30,23 @@
               'url(' + require('../assets/images/' + productObj.image) + ')',
           }"
         ></div>
+
+        <button
+          class="add-to-cart btn"
+          @click="emitProductClick(productObj.id)"
+        >
+          +
+        </button>
       </div>
 
+      <!-- product-description -->
       <div class="product-description">
         <!-- title -->
         <h1 class="product-description__title">
           {{ productObj.name }}
         </h1>
 
-        <!-- category and price -->
+        <!-- price and description-->
         <div class="row">
           <div class="col-xs-12 col-sm-4 product-description__price">
             Price: {{ priceFixed }} €
@@ -46,29 +56,23 @@
           </h4>
         </div>
 
-        <!-- sizes -->
+        <!-- sizes list-->
         <div class="sizes-wrapper">
           <b class="sizes-wrapper__title">Sizes</b>
-          <ul class="sizes-wrapper__list">
-            <li>xs,</li>
-            <li>s,</li>
-            <li>sm,</li>
-            <li>m,</li>
-            <li>l,</li>
-            <li>xl,</li>
-            <li>xxl</li>
+          <ul v-for="(size, id) in sizes" :key="id" class="sizes-wrapper__list">
+            <li>{{ size }}</li>
           </ul>
         </div>
 
-        <!-- colors -->
+        <!-- colors palette-->
         <div class="colors-wrapper">
           <b class="colors-wrapper__title">Colors</b>
           <ul class="colors-wrapper__list">
-            <li class="colors-list__item colors-list__item--red"></li>
-            <li class="colors-list__item colors-list__item--blue"></li>
-            <li class="colors-list__item colors-list__item--green"></li>
-            <li class="colors-list__item colors-list__item--orange"></li>
-            <li class="colors-list__item colors-list__item--purple"></li>
+            <li class="colors-wrapper__item colors-wrapper__item--red"></li>
+            <li class="colors-wrapper__item colors-wrapper__item--lime"></li>
+            <li class="colors-wrapper__item colors-wrapper__item--blue"></li>
+            <li class="colors-wrapper__item colors-wrapper__item--yellow"></li>
+            <li class="colors-wrapper__item colors-wrapper__item--grey"></li>
           </ul>
         </div>
       </div>
@@ -79,6 +83,11 @@
 <script>
 export default {
   name: "EshopCatalogItem",
+  data() {
+    return {
+      sizes: ["xs", "s", "m", "l", "xl", "xxl"],
+    };
+  },
   props: {
     productObj: {
       type: Object,
@@ -89,6 +98,7 @@ export default {
   },
   methods: {
     emitProductClick(id) {
+      console.log("click");
       this.$emit("addToBasket", id);
     },
   },
@@ -108,11 +118,6 @@ export default {
   margin: $margin;
 }
 
-hr {
-  border-color: $bgColorDarken;
-  margin: 15px 0;
-}
-
 .secondary-text {
   color: $secondaryText;
 }
@@ -125,19 +130,15 @@ hr {
   }
 }
 
-// =============
-// product card
-// =============
+// product wrapper
 .card-wrapper {
   position: relative;
   width: 100%;
   height: $cardHeight;
   border: 1px solid $bgColorDarken;
-  border-bottom-width: 2px;
   border-bottom-color: $white;
   overflow: hidden;
-  margin-bottom: 30px;
-  // transition: transform $bezierDuration $bezierProperty;
+  margin-bottom: 25px;
 
   &:after {
     content: "";
@@ -164,10 +165,9 @@ hr {
         opacity: 1;
         transform: translate(-50%, -50%);
       }
-    }
-
-    .image-holder--original {
-      transform: translateY(-15px);
+      &--original {
+        transform: translateY(-15px);
+      }
     }
 
     .product-description {
@@ -177,12 +177,14 @@ hr {
         height: $cardHeight / 2 - 10;
       }
     }
+    .add-to-cart {
+      opacity: 1;
+      transition: all $bezierDuration ease;
+    }
   }
 }
 
-// =============
 // image holder
-// =============
 .image-holder {
   display: block;
   position: relative;
@@ -208,33 +210,57 @@ hr {
     transition: opacity $bezierDuration;
   }
 
-  &:after {
-    content: "+";
-    font-family: "Raleway", sans-serif;
-    font-size: 50px;
-    color: $orange;
-    text-align: center;
-    position: absolute;
-    top: ((($cardHeight / 2) / 2) + 10) - 20;
-    left: 50%;
-    width: 75px;
-    height: 75px;
-    line-height: 70px;
-    background-color: $white;
-    opacity: 0;
-    border-radius: 50%;
-    z-index: 10;
-    transform: translate(-50%, 100%);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    transition: all $bezierDuration - 0.2 ease-out;
+  // &:after {
+  //   content: "+";
+  //   font-family: "Raleway", sans-serif;
+  //   font-size: 50px;
+  //   color: $orange;
+  //   text-align: center;
+  //   position: absolute;
+  //   top: ((($cardHeight / 2) / 2) + 10) - 20;
+  //   left: 50%;
+  //   width: 75px;
+  //   height: 75px;
+  //   line-height: 70px;
+  //   background-color: $white;
+  //   opacity: 0;
+  //   border-radius: 50%;
+  //   z-index: 10;
+  //   transform: translate(-50%, 100%);
+  //   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  //   transition: all $bezierDuration - 0.2 ease;
 
-    @media (min-width: $screen-sm) {
-      top: (($cardHeight / 2) / 2);
-    }
-  }
+  //   @media (min-width: $screen-sm) {
+  //     top: (($cardHeight / 2) / 2);
+  //   }
+  // }
 
   .image-holder--original {
     transition: transform $bezierDuration + 0.2 $bezierProperty;
+  }
+}
+
+.add-to-cart {
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translate(-50%, 100%);
+  transition: all $bezierDuration - 0.2 ease;
+  font-size: 35px;
+  color: $orange;
+  text-align: center;
+  width: 50px;
+  height: 50px;
+  line-height: 47px;
+  background-color: $white;
+  opacity: 0;
+  border-radius: 50%;
+  border-color: transparent;
+  z-index: 10;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+
+  @media (min-width: $screen-sm) {
+    top: 10%;
   }
 }
 
@@ -245,9 +271,7 @@ hr {
   background-position: center center;
 }
 
-// =============
 // product description
-// =============
 .product-description {
   position: absolute;
   left: 0;
@@ -353,33 +377,33 @@ hr {
       padding-left: 10px;
       margin: 0;
     }
-  }
 
-  .colors-list__item {
-    width: 25px;
-    height: 10px;
-    position: relative;
-    z-index: 1;
-    transition: all 0.2s;
+    &__item {
+      width: 25px;
+      height: 10px;
+      position: relative;
+      z-index: 1;
+      transition: all 0.2s;
 
-    &:hover {
-      width: 40px;
+      &:hover {
+        width: 40px;
+      }
+      &--red {
+        background-color: #f44336;
+      }
+      &--lime {
+        background-color: rgb(87, 227, 48);
+      }
+      &--blue {
+        background-color: rgb(36, 103, 218);
+      }
+      &--yellow {
+        background-color: rgb(238, 242, 8);
+      }
+      &--grey {
+        background-color: rgb(169, 166, 166);
+      }
     }
-  }
-  .colors-list__item--red {
-    background-color: #f44336;
-  }
-  .colors-list__item--blue {
-    background-color: #448aff;
-  }
-  .colors-list__item--green {
-    background-color: #cddc39;
-  }
-  .colors-list__item--orange {
-    background-color: #ff9800;
-  }
-  .colors-list__item--purple {
-    background-color: #673ab7;
   }
 }
 </style>

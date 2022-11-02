@@ -28,8 +28,7 @@ export default {
           image: "img-1.jpg",
           name: "Nike running",
           price: 45.555,
-          description:
-            "Tailored Fit. The first and most important part of a high quality shirt is a great tailored fit",
+          description: "Tailored Fit. High quality shirt",
           id: "01",
           available: true,
           category: "Mens",
@@ -38,10 +37,10 @@ export default {
           image: "img-2.jpg",
           name: "Nike home",
           price: 34.666787,
-          description: "High Quality Collar. Cleanly Finished Button Holes",
+          description: "High Quality Collar",
           id: "02",
           available: true,
-          category: "Wemans",
+          category: "Mens",
         },
         {
           image: "img-3.jpg",
@@ -50,14 +49,13 @@ export default {
           description: "High Quality Collar. Fine Stitching.",
           id: "03",
           available: false,
-          category: "Wemans",
+          category: "Mens",
         },
         {
           image: "img-4.jpg",
           name: "T-shirt 4",
           price: 77.1333,
-          description:
-            "Fiber Weave. High-quality fabrics feature fibers that are closely and tightly woven together.",
+          description: "Fiber Weave. Regular fit",
           id: "04",
           available: true,
           category: "Mens",
@@ -66,11 +64,10 @@ export default {
           image: "img-5.jpg",
           name: "T-shirt 5",
           price: 65.565656,
-          description:
-            "High Quality Collar. Tailored Fit. The first and most important part of a high quality shirt is a great tailored fit.",
+          description: "Regular Fit.",
           id: "05",
           available: false,
-          category: "Wemans",
+          category: "Womans",
         },
         {
           image: "img-6.jpg",
@@ -79,7 +76,7 @@ export default {
           description: "Premium Cotton Fabric.",
           id: "06",
           available: true,
-          category: "Wemans",
+          category: "Womans",
         },
       ],
     };
