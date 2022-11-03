@@ -1,6 +1,6 @@
 <template>
   <div class="main-wrapper">
-    <EshopCart />
+    <EshopCart v-if="CART.length" :cart_data="CART" />
     <EshopCatalog />
   </div>
 </template>
@@ -8,6 +8,7 @@
 <script>
 import EshopCatalog from "./EshopCatalog.vue";
 import EshopCart from "./EshopCart.vue";
+import { mapGetters } from "vuex";
 
 export default {
   name: "EshopMainWrapper",
@@ -19,6 +20,9 @@ export default {
     return {};
   },
   props: {},
+  computed: {
+    ...mapGetters(["CART"]),
+  },
 };
 </script>
 

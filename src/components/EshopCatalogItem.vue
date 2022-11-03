@@ -15,7 +15,7 @@
         <!-- Add to cart btn -->
         <button
           class="add-to-cart btn"
-          @click="emitProductClick(productObj.id)"
+          @click="emitAddToCart"
           :class="{ activeBtnClass: isActive }"
         >
           +
@@ -81,14 +81,14 @@ export default {
     },
   },
   methods: {
-    emitProductClick(id) {
+    emitAddToCart() {
+      this.$emit("addToCart", this.productObj);
       this.isActive = !this.isActive;
       setTimeout(() => {
         if (this.isActive === true) {
           this.isActive = false;
         }
       }, 150);
-      this.$emit("addToBasket", id);
     },
   },
   computed: {

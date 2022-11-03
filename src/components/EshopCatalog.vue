@@ -1,13 +1,13 @@
 <template>
   <div class="catalog-wrapper">
-    <h1>Catalog</h1>
+    <h1>Product catalog</h1>
 
     <div class="catalog-wrapper__row">
       <EshopCatalogItem
         v-for="(product, id) in PRODUCTS"
         :key="id"
         :productObj="product"
-        @addToBasket="showChildId"
+        @addToCart="addToCart"
       />
     </div>
   </div>
@@ -29,9 +29,9 @@ export default {
     ...mapGetters(["PRODUCTS"]),
   },
   methods: {
-    ...mapActions(["GET_PRODUCTS_FROM_API"]),
-    showChildId(data) {
-      console.log(data);
+    ...mapActions(["GET_PRODUCTS_FROM_API", "ADD_TO_CART"]),
+    addToCart(data) {
+      this.ADD_TO_CART(data);
     },
   },
   mounted() {
