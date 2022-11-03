@@ -1,7 +1,5 @@
 <template>
   <div class="main-wrapper">
-    <h1>{{ title }}</h1>
-
     <EshopCart />
     <EshopCatalog />
   </div>
@@ -18,9 +16,7 @@ export default {
     EshopCatalog,
   },
   data() {
-    return {
-      title: "here is title",
-    };
+    return {};
   },
   props: {},
 };

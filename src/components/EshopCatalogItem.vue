@@ -1,24 +1,5 @@
 <template>
   <div class="item">
-    <!-- <div>
-      <div
-        class="image-liquid image-holder--original"
-        :style="{
-          'background-image':
-            'url(' + require('../assets/images/' + productObj.image) + ')',
-        }"
-      ></div>
-      <h1 class="item__title">{{ productObj.name }}</h1>
-      <h4 class="item__description">{{ productObj.description }}</h4>
-      <p class="item__price">Price: {{ priceFixed }} €</p>
-      <button
-        class="item__add-to-cart-button btn"
-        @click="emitProductClick(productObj.id)"
-      >
-        Add to cart
-      </button>
-    </div> -->
-
     <!-- card-wrapper -->
     <article class="card-wrapper">
       <!-- image-holder -->
@@ -31,9 +12,11 @@
           }"
         ></div>
 
+        <!-- Add to cart btn -->
         <button
           class="add-to-cart btn"
           @click="emitProductClick(productObj.id)"
+          :class="{ activeBtnClass: isActive }"
         >
           +
         </button>
@@ -86,6 +69,7 @@ export default {
   data() {
     return {
       sizes: ["xs", "s", "m", "l", "xl", "xxl"],
+      isActive: false,
     };
   },
   props: {
@@ -98,7 +82,12 @@ export default {
   },
   methods: {
     emitProductClick(id) {
-      console.log("click");
+      this.isActive = !this.isActive;
+      setTimeout(() => {
+        if (this.isActive === true) {
+          this.isActive = false;
+        }
+      }, 150);
       this.$emit("addToBasket", id);
     },
   },
@@ -177,6 +166,7 @@ export default {
     .add-to-cart {
       opacity: 1;
       transition: all $bezierDuration ease;
+      cursor: pointer;
     }
   }
 }
@@ -259,6 +249,13 @@ export default {
   @media (min-width: $screen-sm) {
     top: 10%;
   }
+}
+.activeBtnClass {
+  box-shadow: none;
+  width: 48px;
+  height: 48px;
+  line-height: 45px;
+  font-size: 32px;
 }
 
 .image-liquid {

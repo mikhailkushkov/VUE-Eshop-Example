@@ -20,7 +20,6 @@ let store = new Vuex.Store({
           method: "GET",
         });
         commit("PUSH_PRODUCTS_TO_STATE", products.data);
-        console.log(products);
         return products;
       } catch (error) {
         console.log(error);
