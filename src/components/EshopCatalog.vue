@@ -1,5 +1,9 @@
 <template>
   <div class="catalog-wrapper">
+    <router-link :to="{ name: 'cart', params: { cart_data: CART } }">
+      <div class="catalog-wrapper__show-cart">Cart: {{ CART.length }}</div>
+    </router-link>
+
     <h1>Product catalog</h1>
 
     <div class="catalog-wrapper__row">
@@ -26,7 +30,7 @@ export default {
     return {};
   },
   computed: {
-    ...mapGetters(["PRODUCTS"]),
+    ...mapGetters(["PRODUCTS", "CART"]),
   },
   methods: {
     ...mapActions(["GET_PRODUCTS_FROM_API", "ADD_TO_CART"]),
@@ -42,6 +46,14 @@ export default {
 
 <style lang="scss">
 .catalog-wrapper {
+  &__show-cart {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: $padding * 2;
+    border: 1px solid $green;
+    border-radius: 5px;
+  }
   &__row {
     display: $d-flex;
     flex-wrap: $flex-wrap;

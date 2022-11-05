@@ -1,6 +1,12 @@
 <template>
   <div>
-    cart :
+    <router-link :to="{ name: 'catalog' }">
+      <div class="catalog-wrapper__show-cart">Back to catalog</div>
+    </router-link>
+
+    <p>cart :</p>
+    <h3 v-if="!cart_data.length">Cart is empty</h3>
+
     <EshopCartItem
       v-for="(item, idx) in cart_data"
       :key="item.id"

@@ -1,27 +1,17 @@
 <template>
   <div class="main-wrapper">
-    <EshopCart v-if="CART.length" :cart_data="CART" />
-    <EshopCatalog />
+    <!-- keep-alive wrapper: to keep condition if url changes -->
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
   </div>
 </template>
 
 <script>
-import EshopCatalog from "./EshopCatalog.vue";
-import EshopCart from "./EshopCart.vue";
-import { mapGetters } from "vuex";
-
 export default {
   name: "EshopMainWrapper",
-  components: {
-    EshopCart,
-    EshopCatalog,
-  },
   data() {
     return {};
-  },
-  props: {},
-  computed: {
-    ...mapGetters(["CART"]),
   },
 };
 </script>
