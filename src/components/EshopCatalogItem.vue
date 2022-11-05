@@ -96,6 +96,9 @@ export default {
       return Number(this.productObj.price.toFixed(2));
     },
   },
+  mounted() {
+    this.$set(this.productObj, "quantity", 1);
+  },
 };
 </script>
 
