@@ -1,4 +1,5 @@
-# vue-eshop-products-page
+# vue-eshop-example
+  .. in progress!
 
 ## Project setup
 ```
