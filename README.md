@@ -6,6 +6,11 @@
 npm install
 ```
 
+## db.json server with a sample json products setup
+```
+npx json-server --watch db.json
+```
+
 ### Compiles and hot-reloads for development
 ```
 npm run serve
