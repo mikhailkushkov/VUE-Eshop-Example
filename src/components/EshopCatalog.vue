@@ -39,7 +39,6 @@ export default {
   computed: {
     ...mapGetters(["PRODUCTS", "CART"]),
     cartState() {
-      console.log(this.CART.length);
       return this.CART.length === 0 ? this.isEmpty : !this.isEmpty;
     },
   },

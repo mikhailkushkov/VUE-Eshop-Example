@@ -7,7 +7,7 @@
     />
     <div class="cart-item__description">
       <p>{{ cart_item_data.name }}</p>
-      <p>{{ cart_item_data.price }}</p>
+      <p>{{ priceToFix }}</p>
       <p>{{ cart_item_data.id }}</p>
     </div>
     <div class="cart-item__quantity">
@@ -41,6 +41,11 @@ export default {
       this.$emit("removeFromCart");
     },
   },
+  computed: {
+    priceToFix() {
+      return this.cart_item_data.price.toFixed(2);
+    },
+  },
 };
 </script>
 
@@ -53,7 +58,7 @@ export default {
   box-shadow: $box-shadow-item;
 
   &__image {
-    max-width: 50px;
+    max-width: 85px;
   }
 
   &__remove-btn {
