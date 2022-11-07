@@ -12,8 +12,8 @@
       :key="item.id"
       :cart_item_data="item"
       @removeFromCart="removeFromCart(idx)"
-      @increment="increment(idx)"
-      @decrement="decrement(idx)"
+      @increment="incrementQnt(idx)"
+      @decrement="decrementQnt(idx)"
     />
 
     <div class="cart-wrapper__total">
@@ -37,10 +37,10 @@ export default {
     removeFromCart(idx) {
       this.REMOVE_FROM_CART(idx);
     },
-    increment(idx) {
+    incrementQnt(idx) {
       this.INCREMENT(idx);
     },
-    decrement(idx) {
+    decrementQnt(idx) {
       this.DECREMENT(idx);
     },
   },
