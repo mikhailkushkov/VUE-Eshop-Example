@@ -12,11 +12,13 @@
       :key="item.id"
       :cart_item_data="item"
       @removeFromCart="removeFromCart(idx)"
+      @increment="increment(idx)"
+      @decrement="decrement(idx)"
     />
 
     <div class="cart-wrapper__total">
       <p class="cart-wrapper__name">Total:</p>
-      <p>{{ totalSumme }}</p>
+      <p class="cart-wrapper__amount">{{ totalSumme }}</p>
     </div>
   </div>
 </template>
@@ -31,9 +33,15 @@ export default {
     EshopCartItem,
   },
   methods: {
-    ...mapActions(["REMOVE_FROM_CART"]),
+    ...mapActions(["REMOVE_FROM_CART", "INCREMENT", "DECREMENT"]),
     removeFromCart(idx) {
       this.REMOVE_FROM_CART(idx);
+    },
+    increment(idx) {
+      this.INCREMENT(idx);
+    },
+    decrement(idx) {
+      this.DECREMENT(idx);
     },
   },
   props: {
@@ -46,11 +54,16 @@ export default {
   },
   computed: {
     totalSumme() {
-      let summe = this.cart_data.reduce(
-        (acc, itemObj) => acc + itemObj.price * itemObj.quantity,
-        0
-      );
-      return summe.toFixed(2);
+      let totalAmount = [];
+
+      if (this.cart_data.length) {
+        this.cart_data.forEach((element) => {
+          totalAmount.push(element.price * element.quantity);
+        });
+      }
+
+      totalAmount = totalAmount.reduce((acc, itemObj) => acc + itemObj, 0);
+      return totalAmount.toFixed(2);
     },
   },
 };
@@ -58,7 +71,7 @@ export default {
 
 <style lang="scss" scoped>
 .cart-wrapper {
-  margin-bottom: 10px;
+  padding-bottom: 55px;
   &__title {
     text-transform: uppercase;
     font-size: 24px;
@@ -72,17 +85,36 @@ export default {
     transform: translate(-50%, -25%);
   }
   &__total {
-    position: static;
-    bottom: 0;
+    position: fixed;
+    bottom: 10px;
     left: 0;
     right: 0;
-    padding: $padding * 2;
+    padding: 0 $padding;
     display: flex;
     justify-content: end;
     background-color: $white;
-    border-top: 1px solid rgba(18, 130, 18, 1);
-    color: rgba(18, 130, 18, 1);
-    font-size: 22px;
+    color: #ffffff;
+    font-size: 27px;
+    height: 50px;
+    z-index: 100;
+    width: 100%;
+    line-height: 0px;
+
+    &:after {
+      content: "";
+      width: 60%;
+      height: inherit;
+      position: absolute;
+      background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0),
+        rgba($orange, 1)
+      );
+      z-index: -1;
+    }
+  }
+  &__amount {
+    padding-right: $padding * 3;
   }
   &__name {
     margin-right: $margin * 2;

@@ -200,31 +200,6 @@ export default {
     transition: opacity $bezierDuration;
   }
 
-  // &:after {
-  //   content: "+";
-  //   font-family: "Raleway", sans-serif;
-  //   font-size: 50px;
-  //   color: $orange;
-  //   text-align: center;
-  //   position: absolute;
-  //   top: ((($cardHeight / 2) / 2) + 10) - 20;
-  //   left: 50%;
-  //   width: 75px;
-  //   height: 75px;
-  //   line-height: 70px;
-  //   background-color: $white;
-  //   opacity: 0;
-  //   border-radius: 50%;
-  //   z-index: 10;
-  //   transform: translate(-50%, 100%);
-  //   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  //   transition: all $bezierDuration - 0.2 ease;
-
-  //   @media (min-width: $screen-sm) {
-  //     top: (($cardHeight / 2) / 2);
-  //   }
-  // }
-
   .image-holder--original {
     transition: transform $bezierDuration + 0.2 $bezierProperty;
   }
