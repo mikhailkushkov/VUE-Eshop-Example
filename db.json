@@ -53,6 +53,87 @@
       "id": "06",
       "available": true,
       "category": "Womans"
+    },
+    {
+      "image": "img-7.jpg",
+      "name": "Nike top",
+      "price": 35.556,
+      "description": "Premium Cotton Fabric.",
+      "id": "07",
+      "available": false,
+      "category": "Womans"
+    },
+    {
+      "image": "img-8.jpg",
+      "name": "Nike top",
+      "price": 37.8897,
+      "description": "Premium T-shirt. 100% Cotton",
+      "id": "08",
+      "available": true,
+      "category": "Womans"
+    },
+    {
+      "image": "img-9.jpg",
+      "name": "Nike T-shirt Air",
+      "price": 22.444545,
+      "description": "Premium T-shirt. 100% Cotton",
+      "id": "09",
+      "available": true,
+      "category": "Womans"
+    },
+    {
+      "image": "img-10.jpg",
+      "name": "Nike T-shirt Gym",
+      "price": 22.4545,
+      "description": "Premium T-shirt. Gym",
+      "id": "10",
+      "available": true,
+      "category": "Womans"
+    },
+    {
+      "image": "img-11.jpg",
+      "name": "Nike T-shirt Gym rose",
+      "price": 24.43325,
+      "description": "Premium T-shirt. Gym",
+      "id": "11",
+      "available": true,
+      "category": "Womans"
+    },
+    {
+      "image": "img-12.jpg",
+      "name": "Nike Blazer",
+      "price": 45.6674,
+      "description": "Premium Blazer. Running",
+      "id": "12",
+      "available": false,
+      "category": "Womans"
+    },
+    {
+      "image": "img-13.jpg",
+      "name": "Nike T-shirt",
+      "price": 49.34535,
+      "description": "Premium Shirt. Running",
+      "id": "13",
+      "available": true,
+      "category": "Womans"
+    },
+    {
+      "image": "img-14.jpg",
+      "name": "Nike Top",
+      "price": 34.56444,
+      "description": "Premium Top. Running",
+      "id": "14",
+      "available": true,
+      "category": "Womans"
+    },
+    {
+      "image": "img-15.jpg",
+      "name": "Nike Top",
+      "price": 23.564,
+      "description": "Premium Top. Gym",
+      "id": "15",
+      "available": false,
+      "category": "Womans"
     }
   ]
 }
