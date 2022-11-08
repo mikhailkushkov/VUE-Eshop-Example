@@ -18,19 +18,23 @@
 
     <div class="cart-wrapper__total">
       <p class="cart-wrapper__name">Total:</p>
-      <p class="cart-wrapper__amount">{{ totalSumme }}</p>
+      <p class="cart-wrapper__amount">{{ totalSumme | toFix }}</p>
     </div>
   </div>
 </template>
 
 <script>
 import EshopCartItem from "./EshopCartItem.vue";
+import toFix from "../../filters/toFixed";
 import { mapActions } from "vuex";
 
 export default {
   name: "EshopCart",
   components: {
     EshopCartItem,
+  },
+  filters: {
+    toFix,
   },
   methods: {
     ...mapActions(["REMOVE_FROM_CART", "INCREMENT", "DECREMENT"]),
@@ -63,7 +67,7 @@ export default {
       }
 
       totalAmount = totalAmount.reduce((acc, itemObj) => acc + itemObj, 0);
-      return totalAmount.toFixed(2);
+      return totalAmount;
     },
   },
 };

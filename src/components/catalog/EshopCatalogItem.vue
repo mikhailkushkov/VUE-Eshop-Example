@@ -31,12 +31,20 @@
 
         <!-- price and description-->
         <div class="row">
-          <div class="col-xs-12 col-sm-4 product-description__price">
-            Price: {{ priceFixed }} €
+          <div class="product-description__info-wrap">
+            <!-- show more-->
+            <a class="product-description__show-more" @click="showModal">
+              Show more
+            </a>
+            <!-- price-->
+            <div class="product-description__price">
+              Price: {{ productObj.price | toFix }} €
+            </div>
           </div>
-          <h4 class="product-description__text secondary-text">
+
+          <!-- <h4 class="product-description__text secondary-text">
             {{ productObj.description }}
-          </h4>
+          </h4> -->
         </div>
 
         <!-- sizes list-->
@@ -60,17 +68,46 @@
         </div>
       </div>
     </article>
+
+    <!-- EshopModal-->
+    <EshopModal
+      v-if="isVisible"
+      @closeModal="closeModal"
+      btnTitle="Add to cart"
+      :modalTitle="productObj.name"
+    >
+      <p>{{ productObj.name }}</p>
+      <div
+        class="image-liquid image-holder--original"
+        :style="{
+          'background-image':
+            'url(' + require('../../assets/images/' + productObj.image) + ')',
+        }"
+      ></div>
+      <p>{{ productObj.description }}</p>
+      <p>{{ productObj.category }}</p>
+    </EshopModal>
   </div>
 </template>
 
 <script>
+import toFix from "../../filters/toFixed";
+import EshopModal from "../modal/EshopModal.vue";
+
 export default {
   name: "EshopCatalogItem",
+  components: {
+    EshopModal,
+  },
   data() {
     return {
       sizes: ["xs", "s", "m", "l", "xl", "xxl"],
       isActive: false,
+      isVisible: false,
     };
+  },
+  filters: {
+    toFix,
   },
   props: {
     productObj: {
@@ -90,10 +127,11 @@ export default {
         }
       }, 150);
     },
-  },
-  computed: {
-    priceFixed() {
-      return Number(this.productObj.price.toFixed(2));
+    showModal() {
+      this.isVisible = true;
+    },
+    closeModal() {
+      this.isVisible = false;
     },
   },
   mounted() {
@@ -103,6 +141,9 @@ export default {
 </script>
 
 <style lang="scss">
+.row {
+  display: flex;
+}
 .item {
   box-shadow: $box-shadow-item;
   flex-basis: 25%;
@@ -250,7 +291,7 @@ export default {
   bottom: 0;
   width: 100%;
   height: $cardDescriptionHeight + 15;
-  padding: 0 10px;
+  //padding: 0 10px;
   overflow: hidden;
   background-color: $bgColor;
   border-top: 1px solid $bgColorDarken;
@@ -288,6 +329,22 @@ export default {
     }
   }
 
+  &__info-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 5px;
+  }
+
+  &__show-more {
+    font-size: 12px;
+    &:hover {
+      cursor: pointer;
+      opacity: 0.6;
+    }
+  }
+
   // text
   .product-description__text {
     white-space: nowrap;
@@ -303,7 +360,7 @@ export default {
     text-align: left;
     font-weight: 700;
     font-size: 14px;
-    margin-top: 5px;
+    //margin-top: 5px;
 
     @media (min-width: $screen-sm) {
       text-align: right;

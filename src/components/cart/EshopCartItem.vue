@@ -6,9 +6,13 @@
       class="cart-item__image"
     />
     <div class="cart-item__description">
-      <p>{{ cart_item_data.name }}</p>
-      <p>{{ priceToFix }}</p>
-      <p>{{ cart_item_data.id }}</p>
+      <p class="cart-item__description-name">{{ cart_item_data.name }}</p>
+      <p class="cart-item__description-price">
+        {{ cart_item_data.price | toFix }}
+      </p>
+      <p class="cart-item__description-article">
+        Article №: {{ cart_item_data.id }}
+      </p>
     </div>
     <div class="cart-item__quantity">
       <p>Quantity</p>
@@ -23,12 +27,17 @@
 </template>
 
 <script>
+import toFix from "../../filters/toFixed";
+
 export default {
   name: "EshopCartItem",
   data() {
     return {
       removeFromCartBtnTitle: "Delete Item",
     };
+  },
+  filters: {
+    toFix,
   },
   props: {
     cart_item_data: {
@@ -47,11 +56,6 @@ export default {
     },
     removeItem() {
       this.$emit("removeFromCart");
-    },
-  },
-  computed: {
-    priceToFix() {
-      return this.cart_item_data.price.toFixed(2);
     },
   },
 };
