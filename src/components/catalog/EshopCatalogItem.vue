@@ -75,6 +75,7 @@
       @closeModal="closeModal"
       btnTitle="Add to cart"
       :modalTitle="productObj.name"
+      @addToCart="emitAddToCart"
     >
       <p>{{ productObj.name }}</p>
       <div

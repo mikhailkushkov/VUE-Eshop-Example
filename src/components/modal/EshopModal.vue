@@ -1,5 +1,5 @@
 <template>
-  <div class="modal-layer">
+  <div class="modal-layer" ref="modal_layer">
     <div class="modal-wrapper">
       <div class="modal-wrapper__header">
         <span>{{ modalTitle }}</span>
@@ -15,7 +15,9 @@
         <slot></slot>
       </div>
       <div class="modal-wrapper__footer">
-        <button class="btn-add-to-cart">{{ btnTitle }}</button>
+        <button class="btn-add-to-cart" @click="emitModalBtnAction">
+          {{ btnTitle }}
+        </button>
       </div>
     </div>
   </div>
@@ -41,6 +43,17 @@ export default {
     emitCloseModal() {
       this.$emit("closeModal");
     },
+    emitModalBtnAction() {
+      this.$emit("addToCart");
+    },
+  },
+  mounted() {
+    let vm = this;
+    document.addEventListener("click", (item) => {
+      if (item.target === vm.$refs["modal_layer"]) {
+        vm.emitCloseModal();
+      }
+    });
   },
 };
 </script>
