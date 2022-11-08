@@ -1,8 +1,8 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 
-import EshopCatalog from "../components/EshopCatalog";
-import EshopCart from "../components/EshopCart";
+import EshopCatalog from "../components/catalog/EshopCatalog";
+import EshopCart from "../components/cart/EshopCart";
 
 Vue.use(VueRouter);
 

@@ -8,7 +8,7 @@
           class="image-liquid image-holder--original"
           :style="{
             'background-image':
-              'url(' + require('../assets/images/' + productObj.image) + ')',
+              'url(' + require('../../assets/images/' + productObj.image) + ')',
           }"
         ></div>
 
