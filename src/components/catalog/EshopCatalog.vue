@@ -11,9 +11,17 @@
 
     <h1 class="catalog-wrapper__title">Product catalog</h1>
 
+    <p class="catalog-wrapper__filter-title">Filter:</p>
+    <EshopSelect
+      :selected="selected"
+      :options="categories"
+      @select="sortByCategories"
+    />
+    <p>{{ selected }}</p>
+
     <div class="catalog-wrapper__row">
       <EshopCatalogItem
-        v-for="(product, id) in PRODUCTS"
+        v-for="(product, id) in filteredProducts"
         :key="id"
         :productObj="product"
         @addToCart="addToCart"
@@ -24,16 +32,25 @@
 
 <script>
 import EshopCatalogItem from "./EshopCatalogItem.vue";
+import EshopSelect from "../UI/select/EshopSelect.vue";
 import { mapActions, mapGetters } from "vuex";
 
 export default {
   name: "EshopCatalog",
   components: {
     EshopCatalogItem,
+    EshopSelect,
   },
   data() {
     return {
       isEmpty: true,
+      categories: [
+        { name: "ALL", value: "ALL" },
+        { name: "Mens", value: "M" },
+        { name: "Womans", value: "W" },
+      ],
+      selected: "ALL",
+      sortedProducts: [],
     };
   },
   computed: {
@@ -41,11 +58,27 @@ export default {
     cartState() {
       return this.CART.length === 0 ? this.isEmpty : !this.isEmpty;
     },
+    filteredProducts() {
+      if (this.sortedProducts.length) {
+        return this.sortedProducts;
+      } else {
+        return this.PRODUCTS;
+      }
+    },
   },
   methods: {
     ...mapActions(["GET_PRODUCTS_FROM_API", "ADD_TO_CART"]),
     addToCart(data) {
       this.ADD_TO_CART(data);
+    },
+    sortByCategories(category) {
+      this.sortedProducts = [];
+      this.PRODUCTS.map((item) => {
+        if (item.category === category.name) {
+          this.sortedProducts.push(item);
+        }
+      });
+      this.selected = category.name;
     },
   },
   mounted() {
@@ -71,6 +104,10 @@ export default {
     font-size: 24px;
     font-weight: 400;
     letter-spacing: 3px;
+  }
+  &__filter-title {
+    text-align: left;
+    margin: 0;
   }
   &__row {
     display: $d-flex;

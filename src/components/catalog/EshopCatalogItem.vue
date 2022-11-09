@@ -104,7 +104,7 @@
 
 <script>
 import toFix from "../../filters/toFixed";
-import EshopModal from "../modal/EshopModal.vue";
+import EshopModal from "../UI/modal/EshopModal.vue";
 
 export default {
   name: "EshopCatalogItem",
