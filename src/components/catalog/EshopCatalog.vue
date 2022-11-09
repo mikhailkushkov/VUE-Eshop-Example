@@ -1,23 +1,31 @@
 <template>
   <div class="catalog-wrapper">
-    <router-link :to="{ name: 'cart', params: { cart_data: CART } }">
-      <div
-        class="catalog-wrapper__show-cart"
-        :class="{ cartActive: cartState }"
-      >
-        Cart: {{ CART.length }}
-      </div>
-    </router-link>
+    <!-- Header -->
+    <header class="catalog-wrapper__header">
+      <router-link :to="{ name: 'cart', params: { cart_data: CART } }">
+        <div
+          class="catalog-wrapper__show-cart"
+          :class="{ cartActive: cartState }"
+        >
+          Cart: {{ CART.length }}
+        </div>
+      </router-link>
+      <h1 class="catalog-wrapper__title">Product catalog</h1>
+    </header>
 
-    <h1 class="catalog-wrapper__title">Product catalog</h1>
+    <!-- Filter -->
+    <div class="catalog-wrapper__filter">
+      <p class="catalog-wrapper__filter-title">Filter category:</p>
+      <EshopSelect
+        :selected="selected"
+        :options="categories"
+        @select="sortByCategories"
+      />
+    </div>
 
-    <p class="catalog-wrapper__filter-title">Filter:</p>
-    <EshopSelect
-      :selected="selected"
-      :options="categories"
-      @select="sortByCategories"
-    />
-    <p>{{ selected }}</p>
+    <div class="catalog-wrapper__row">
+      <p class="catalog-wrapper__selected">{{ selected }}</p>
+    </div>
 
     <div class="catalog-wrapper__row">
       <EshopCatalogItem
@@ -89,25 +97,42 @@ export default {
 
 <style lang="scss">
 .catalog-wrapper {
+  &__header {
+    box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+    padding: 10px 0;
+  }
   &__show-cart {
     position: fixed;
+    min-width: 70px;
     top: 10px;
-    right: 10px;
+    right: 20px;
     padding: $padding;
-    border: 1px solid $green;
+    //border: 1px solid $green;
     border-radius: 5px;
     background-color: $white;
     z-index: 100;
+    color: $green;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   }
   &__title {
     text-transform: uppercase;
     font-size: 24px;
     font-weight: 400;
     letter-spacing: 3px;
+    margin: 0;
+  }
+  &__filter {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 10px;
+    padding: 5px;
   }
   &__filter-title {
     text-align: left;
     margin: 0;
+    margin-right: 10px;
   }
   &__row {
     display: $d-flex;
@@ -121,8 +146,11 @@ export default {
     justify-content: space-between;
     align-items: center;
   }
+  &__selected {
+    margin: 5px 0;
+  }
   .cartActive {
-    border-color: red;
+    color: red;
   }
 }
 </style>

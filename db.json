@@ -43,7 +43,7 @@
       "description": "Regular Fit.",
       "id": "05",
       "available": false,
-      "category": "Womans"
+      "category": "Mens"
     },
     {
       "image": "img-6.jpg",
@@ -79,7 +79,7 @@
       "description": "Premium T-shirt. 100% Cotton",
       "id": "09",
       "available": true,
-      "category": "Womans"
+      "category": "Mens"
     },
     {
       "image": "img-10.jpg",

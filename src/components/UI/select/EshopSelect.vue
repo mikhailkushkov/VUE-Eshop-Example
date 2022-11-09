@@ -51,8 +51,8 @@ export default {
 
 <style lang="scss" scoped>
 .select-wrap {
-  width: 150px;
-  border: 1px solid green;
+  width: 100px;
+  border: 1px solid rgb(125, 124, 124);
   position: relative;
   &__title {
     padding: 0;
