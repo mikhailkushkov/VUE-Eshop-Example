@@ -15,7 +15,7 @@
         <slot></slot>
       </div>
       <div class="modal-wrapper__footer">
-        <button class="btn-add-to-cart" @click="emitModalBtnAction">
+        <button class="modal-wrapper__footer-btn" @click="emitModalBtnAction">
           {{ btnTitle }}
         </button>
       </div>
@@ -97,17 +97,49 @@ export default {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-direction: column;
+      flex-direction: row;
 
       .image-holder--original {
         background-size: contain;
         background-repeat: no-repeat;
+      }
+      .modal-description-wrap {
+        flex-direction: row;
+        text-align: left;
+
+        &__sizes-wrapper {
+          ul {
+            list-style-type: none;
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: row;
+            padding: 0;
+
+            li {
+              margin-right: 5px;
+            }
+          }
+        }
       }
     }
     &__footer {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      &-btn {
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+        border: none;
+        background: none;
+        padding: 5px 10px;
+        border: 1px solid green;
+        border-radius: 3px;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
     }
   }
 }

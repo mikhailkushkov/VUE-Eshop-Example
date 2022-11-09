@@ -38,13 +38,9 @@
             </a>
             <!-- price-->
             <div class="product-description__price">
-              Price: {{ productObj.price | toFix }} €
+              Price: {{ productObj.price | toFix }}
             </div>
           </div>
-
-          <!-- <h4 class="product-description__text secondary-text">
-            {{ productObj.description }}
-          </h4> -->
         </div>
 
         <!-- sizes list-->
@@ -77,7 +73,6 @@
       :modalTitle="productObj.name"
       @addToCart="emitAddToCart"
     >
-      <p>{{ productObj.name }}</p>
       <div
         class="image-liquid image-holder--original"
         :style="{
@@ -85,8 +80,24 @@
             'url(' + require('../../assets/images/' + productObj.image) + ')',
         }"
       ></div>
-      <p>{{ productObj.description }}</p>
-      <p>{{ productObj.category }}</p>
+      <div class="modal-description-wrap">
+        <p>{{ productObj.name }}</p>
+        <p>{{ productObj.description }}</p>
+        <p>{{ productObj.category }}</p>
+        <!-- sizes list-->
+        <div class="modal-description-wrap__sizes-wrapper">
+          <p class="modal-description-wrap__title">{{ modalSizesTitle }}:</p>
+          <ul>
+            <li
+              v-for="(size, id) in sizes"
+              :key="id"
+              class="sizes-wrapper__list"
+            >
+              {{ size }}
+            </li>
+          </ul>
+        </div>
+      </div>
     </EshopModal>
   </div>
 </template>
@@ -105,6 +116,7 @@ export default {
       sizes: ["xs", "s", "m", "l", "xl", "xxl"],
       isActive: false,
       isVisible: false,
+      modalSizesTitle: "Available Sizes",
     };
   },
   filters: {
@@ -270,6 +282,7 @@ export default {
     top: 10%;
   }
 }
+
 .activeBtnClass {
   box-shadow: none;
   width: 48px;
