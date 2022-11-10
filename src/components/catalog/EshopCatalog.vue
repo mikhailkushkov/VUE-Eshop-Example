@@ -17,14 +17,14 @@
     <div class="catalog-wrapper__filter">
       <p class="catalog-wrapper__filter-title">Filter category:</p>
       <EshopSelect
-        :selected="selected"
+        :selected="selectedCategory"
         :options="categories"
         @select="sortByCategories"
       />
     </div>
 
     <div class="catalog-wrapper__row">
-      <p class="catalog-wrapper__selected">{{ selected }}</p>
+      <p class="catalog-wrapper__selected">{{ selectedCategory }}</p>
     </div>
 
     <div class="catalog-wrapper__row">
@@ -57,7 +57,7 @@ export default {
         { name: "Mens", value: "M" },
         { name: "Womans", value: "W" },
       ],
-      selected: "ALL",
+      selectedCategory: "ALL",
       sortedProducts: [],
     };
   },
@@ -86,7 +86,7 @@ export default {
           this.sortedProducts.push(item);
         }
       });
-      this.selected = category.name;
+      this.selectedCategory = category.name;
     },
   },
   mounted() {
@@ -105,9 +105,8 @@ export default {
     position: fixed;
     min-width: 70px;
     top: 10px;
-    right: 20px;
+    right: 95px;
     padding: $padding;
-    //border: 1px solid $green;
     border-radius: 5px;
     background-color: $white;
     z-index: 100;

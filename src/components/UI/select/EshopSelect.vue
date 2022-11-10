@@ -52,20 +52,30 @@ export default {
 <style lang="scss" scoped>
 .select-wrap {
   width: 100px;
-  border: 1px solid rgb(125, 124, 124);
   position: relative;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
+    rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
+    rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+  &:hover {
+    cursor: pointer;
+  }
   &__title {
     padding: 0;
     margin: 0;
   }
   &__options {
-    border: 1px solid grey;
     position: absolute;
     top: 25px;
     left: -1px;
     width: inherit;
     z-index: 200;
     background-color: $white;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
+      rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
+      rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+    &:hover {
+      cursor: pointer;
+    }
     p {
       padding: 10px;
       margin: 0;
