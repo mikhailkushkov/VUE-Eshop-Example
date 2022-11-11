@@ -95,7 +95,7 @@ export default {
     right: 0;
     padding: 0 $padding;
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     background-color: $white;
     color: #ffffff;
     font-size: 27px;

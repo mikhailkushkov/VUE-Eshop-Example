@@ -1,5 +1,7 @@
 <template>
   <div class="catalog-wrapper">
+    <Notification :notifications="notifications" :timeout="2000" />
+
     <!-- Header -->
     <header class="catalog-wrapper__header">
       <router-link :to="{ name: 'cart', params: { cart_data: CART } }">
@@ -41,6 +43,7 @@
 <script>
 import EshopCatalogItem from "./EshopCatalogItem.vue";
 import EshopSelect from "../UI/select/EshopSelect.vue";
+import Notification from "../UI/notification/Notification.vue";
 import { mapActions, mapGetters } from "vuex";
 
 export default {
@@ -48,6 +51,7 @@ export default {
   components: {
     EshopCatalogItem,
     EshopSelect,
+    Notification,
   },
   data() {
     return {
@@ -59,6 +63,7 @@ export default {
       ],
       selectedCategory: "ALL",
       sortedProducts: [],
+      notifications: [],
     };
   },
   computed: {
@@ -77,7 +82,15 @@ export default {
   methods: {
     ...mapActions(["GET_PRODUCTS_FROM_API", "ADD_TO_CART"]),
     addToCart(data) {
-      this.ADD_TO_CART(data);
+      // because of - this.ADD_TO_CART(data) is an action in VUEX and PROMISE also,
+      // we can use method '.then' to run something after this Promise
+      this.ADD_TO_CART(data).then(() => {
+        let uniqueId = Date.now().toLocaleString();
+        this.notifications.unshift({
+          name: "Product is added",
+          id: uniqueId,
+        });
+      });
     },
     sortByCategories(category) {
       this.sortedProducts = [];
