@@ -1,7 +1,9 @@
 <template>
   <div class="cart-wrapper">
     <router-link :to="{ name: 'catalog' }">
-      <div class="catalog-wrapper__show-cart">Back to catalog</div>
+      <div class="catalog-wrapper__show-cart cart-wrapper__cart-back-btn">
+        Back to catalog
+      </div>
     </router-link>
 
     <p class="cart-wrapper__title">cart</p>
@@ -76,6 +78,13 @@ export default {
 <style lang="scss" scoped>
 .cart-wrapper {
   padding-bottom: 55px;
+  &__cart-back-btn {
+    top: 10px;
+    width: 60px;
+    @include for-tablet-portrait-up {
+      width: auto;
+    }
+  }
   &__title {
     text-transform: uppercase;
     font-size: 24px;

@@ -4,14 +4,14 @@
 
     <!-- Header -->
     <header class="catalog-wrapper__header">
-      <router-link :to="{ name: 'cart', params: { cart_data: CART } }">
-        <div
-          class="catalog-wrapper__show-cart"
+      <div class="catalog-wrapper__show-cart">
+        <router-link
+          :to="{ name: 'cart', params: { cart_data: CART } }"
           :class="{ cartActive: cartState }"
         >
           Cart: {{ CART.length }}
-        </div>
-      </router-link>
+        </router-link>
+      </div>
       <h1 class="catalog-wrapper__title">Product catalog</h1>
     </header>
 
@@ -110,21 +110,32 @@ export default {
 
 <style lang="scss">
 .catalog-wrapper {
+  position: relative;
   &__header {
     box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
     padding: 10px 0;
   }
   &__show-cart {
-    position: fixed;
+    position: absolute;
     min-width: 70px;
-    top: 10px;
-    right: 95px;
+    top: 75px;
+    right: 15px;
     padding: $padding;
     border-radius: 5px;
     background-color: $white;
     z-index: 100;
-    color: $green;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+    a {
+      text-decoration: none;
+      color: $green;
+    }
+    @include for-desktop-up {
+      position: fixed;
+      min-width: 70px;
+      top: 10px;
+      right: 95px;
+    }
   }
   &__title {
     text-transform: uppercase;

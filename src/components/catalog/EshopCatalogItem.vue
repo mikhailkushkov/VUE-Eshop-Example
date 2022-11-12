@@ -159,9 +159,15 @@ export default {
 }
 .item {
   box-shadow: $box-shadow-item;
-  flex-basis: 25%;
+  flex-basis: 85%;
   padding: $padding;
   margin: $margin;
+  @include for-tablet-portrait-up {
+    flex-basis: 35%;
+  }
+  @include for-tablet-landscape-up {
+    flex-basis: 25%;
+  }
 }
 
 .secondary-text {

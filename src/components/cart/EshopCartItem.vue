@@ -68,6 +68,12 @@ export default {
   align-items: center;
   flex-wrap: nowrap;
   box-shadow: $box-shadow-item;
+  flex-direction: column;
+  padding: $padding;
+
+  @include for-tablet-portrait-up {
+    flex-direction: row;
+  }
 
   &__image {
     max-width: 85px;
@@ -86,8 +92,16 @@ export default {
     font-size: 10px;
     font-weight: 800;
     text-transform: uppercase;
+    position: absolute;
+    right: 10px;
+    width: 50px;
     &:hover {
       cursor: pointer;
+    }
+    @include for-tablet-portrait-up {
+      position: relative;
+      right: 0;
+      width: auto;
     }
   }
   &__quantity-btn {

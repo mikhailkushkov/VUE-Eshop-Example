@@ -11,10 +11,12 @@
           <i class="material-icons">check_circle</i>
         </div>
       </div>
-      <div class="notification-wrapper__buttons">
-        <button v-if="rButton.length">{{ rButton }}</button>
-        <button v-if="lButton.length">{{ lButton }}</button>
-      </div>
+      <template v-if="rButton.length && lButton.length">
+        <div class="notification-wrapper__buttons">
+          <button>{{ rButton }}</button>
+          <button>{{ lButton }}</button>
+        </div>
+      </template>
     </transition-group>
   </div>
 </template>
@@ -69,7 +71,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .notification-wrapper {
   position: fixed;
   top: 80px;
@@ -92,7 +94,7 @@ export default {
     padding: $padding * 2;
     border-radius: 3px;
     color: $white;
-    height: 50px;
+    height: 15px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -118,7 +120,7 @@ export default {
       opacity: 1;
     }
     &-leave {
-      height: 50px;
+      height: 15px;
       opacity: 1;
     }
     &-leave-active {
